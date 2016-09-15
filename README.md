@@ -29,6 +29,7 @@ Hue.discover(function(stations) {
 var client = Hue.createClient({
   stationIp:station, // 'x.x.x.x', retrieved from the previous step
   appName:appName // Any alpha numeric name for your app
+  username:previouslyGeneratedToken // (optional) generated during client.register
 });
 
 client.lights(function(err,lights) {
