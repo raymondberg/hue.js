@@ -29,6 +29,7 @@ Hue.discover(function(stations) {
 var client = Hue.createClient({
   stationIp:station, // 'x.x.x.x', retrieved from the previous step
   appName:appName // Any alpha numeric name for your app
+  username:previouslyGeneratedToken // (optional) generated during client.register
 });
 
 client.lights(function(err,lights) {
@@ -55,8 +56,12 @@ client.lights(function(err,lights) {
 ### Hue.createClient(opts)
 `opts` being `stationIp` ip address and an `appName`. Returns a hue `client`.
 
-### Hue.Discover(cb)
+### Hue.Discover([opts], cb)
 Discovers hue bridges on your local network.
+
+`opts` is optional and may be omitted
+
+- `opts.timeout`: timeout to use for the UDP broadcast packet, defaults to 3000ms
 
 ## Client API
 
